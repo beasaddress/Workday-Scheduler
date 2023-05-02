@@ -45,11 +45,13 @@ $(function () {
         $('.time-block').each(function() {
             const blockHour = parseInt(this.id);
             if (blockHour === currentHour) {
-                $(this).removeClass('past future').addClass('present');
+                $(this).removeClass('past future').addClass('present'); //if blockHour (from the HTML div id) is equal to the currentHour (which we grabbed from dayjs, then converted it to a simple H)
+                //then we remove the color setting from the past and future class settings in css, and add the color setting from the css class in 'present'. In this case, red.
             } else if (blockHour < currentHour) {
                 $(this).removeClass('future present').addClass('past');
-            } else {
+            } else {//since blockHour is less than currentHour, we replace the future and present class settings, and add past setting, in this case, grey
                 $(this).removeClass('past present').addClass('future');
+                //makin it green!
             }
          });    
      }

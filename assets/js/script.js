@@ -36,7 +36,8 @@ $(function () {
     }
     function userInput() { //this function will, once the user clicks the save button, the user input in the text area element will be saved to local storage
         $('.saveBtn').on('click', function() { 
-            const key = $(this).parent().attr('id'); //"this" references the parent of the sav button, which is the correspondig number of the time block. So, the when save icon is clicked, its saved in the right time clock
+            const key = $(this).parent().attr('id'); //"this" references the parent of the sav button, which is the correspondig number of the time block. So,
+            // when save icon is clicked, its saved in the right time block
             const value = $(this).siblings('.description').val();//"this" references the user input that will fall into the description class
             localStorage.setItem(key, value);
         })
@@ -55,7 +56,14 @@ $(function () {
             }
          });    
      }
-}
+     $('time-block').each(function(){ //for "each" time block, this function uses the "key" which is the data that was saved from the click event.
+        const key = $(this).attr('id');
+        const value = localStorage.getItem(key); //pulling the data saved from the click event on a specifc time block and displaying that in the textarea element
+        $(this).children('.description').val(value);
+     });
+
+     
+     
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
     // local storage. HINT: What does `this` reference in the click listener
@@ -75,3 +83,4 @@ $(function () {
     //
     // TODO: Add code to display the current date in the header of the page.
   });
+  

@@ -5,19 +5,7 @@
 
 
 
-const dateEl = $('#date');
-$(function displayDate() {
-    const thisDay = dayjs().format('MMM DD, YYYY');
-    dateEl.text(thisDay);
-    console.log(thisDay);  
-  });
 
-const timeEl = $('#time');
-$(function displayTime() {
-   const thisTime = dayjs().format('hh:mm:ss a');
-   timeEl.text(thisTime);
-   console.log(thisTime);
-});
   
 //this is going to wait until the DOM loads before executing the function
 
@@ -51,7 +39,7 @@ $(function () {
     function changeColor () {
         $('.time-block').each(function() {
             const blockHour = parseInt(this.id);
-            if (blockHour === currentHour) {
+            if (blockHour == currentHour) {
                 $(this).removeClass('past future').addClass('present'); //if blockHour (from the HTML div id) is equal to the currentHour (which we grabbed from dayjs, then converted it to a simple H)
                 //then we remove the color setting from the past and future class settings in css, and add the color setting from the css class in 'present'. In this case, red.
             } else if (blockHour < currentHour) {
@@ -62,18 +50,28 @@ $(function () {
             }
          });    
      }
-     $('time-block').each(function(){ //for "each" time block, this function uses the "key" which is the data that was saved from the click event.
+     $('.time-block').each(function(){ //for "each" time block, this function uses the "key" which is the data that was saved from the click event.
         const key = $(this).attr('id');
         const value = localStorage.getItem(key); //pulling the data saved from the click event on a specifc time block and displaying that in the textarea element
         $(this).children('.description').val(value);
      });
+     //realizing that i had my method of displaying the current date and time outside of the call that interacts with jQuery, so im going to try to put it here
+     //and see if thats why my colors arent changing and why my time isnt updating by the second..I also had them in two separate functions, im going to put date and time in one function
 
+     function updateClock (){
+        const dateEl = $('#date');
+        const timeEl = $('#time');
+        const thisDay = dayjs().format('MMM DD, YYYY');
+        const thisTime = dayjs().format('hh:mm:ss a');
+        dateEl.text(thisDay);
+        timeEl.text(thisTime);
+     }
      //to set up the page, calling the functions..
      newColor();
      userInput();
      changeColor();
 
-     setInterval(displayTime, 1000);
+     setInterval(updateClock, 1000);
      
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in

@@ -14,9 +14,6 @@ $(function () {
     //Multiple functions in this file will be constantly referncing this 'H' since we put it in a varaible called currentHour.
     //We will need to be checking the currentHour when deciding if we need to change the color of a block
     const currentHour = dayjs().format('H');
-
-   
-
     console.log(currentHour);
     //after formatting the time to H, the function will change colors based on if "blockHour" (from the time-block class) is greater than, less than, or equal to the current hour. 
     function newColor(){

@@ -2,6 +2,9 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 //creating two function that will use dayjs to display the current time and day in the header
+
+
+
 const dateEl = $('#date');
 $(function displayDate() {
     const thisDay = dayjs().format('MMM DD, YYYY');
@@ -11,11 +14,10 @@ $(function displayDate() {
 
 const timeEl = $('#time');
 $(function displayTime() {
-   const thisTime = dayjs().format(' hh:mm:ss a');
+   const thisTime = dayjs().format('hh:mm:ss a');
    timeEl.text(thisTime);
    console.log(thisTime);
 });
-  
   
 //this is going to wait until the DOM loads before executing the function
 
@@ -24,6 +26,9 @@ $(function () {
     //Multiple functions in this file will be constantly referncing this 'H' since we put it in a varaible called currentHour.
     //We will need to be checking the currentHour when deciding if we need to change the color of a block
     const currentHour = dayjs().format('H');
+
+   
+
     console.log(currentHour);
     //after formatting the time to H, the function will change colors based on if "blockHour" (from the time-block class) is greater than, less than, or equal to the current hour. 
     function newColor(){
@@ -40,6 +45,7 @@ $(function () {
             // when save icon is clicked, its saved in the right time block
             const value = $(this).siblings('.description').val();//"this" references the user input that will fall into the description class
             localStorage.setItem(key, value);
+            console.log(value);
         })
     }
     function changeColor () {
@@ -62,7 +68,12 @@ $(function () {
         $(this).children('.description').val(value);
      });
 
-     
+     //to set up the page, calling the functions..
+     newColor();
+     userInput();
+     changeColor();
+
+     setInterval(displayTime, 1000);
      
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in

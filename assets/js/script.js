@@ -23,7 +23,7 @@ $(function () {
         $('.time-block').each(function(){
             const blockHour = parseInt(this.id);
             $(this).toggleClass('past', blockHour < currentHour); //'H' will register as "past" if the blockHour (time from HTML block) is less than dayjs currentHour
-            $(this).toggleClass('present', blockHour === currentHour); //'H' will turn red if time block class is now equal to dayjs's currentHour
+            $(this).toggleClass('present', blockHour == currentHour); //'H' will turn red if time block class is now equal to dayjs's currentHour
             $(this).toggleClass('future', blockHour > currentHour); //'H' will register as future if time block class is greater than dayjs's currentHour, turns green
         });
     }

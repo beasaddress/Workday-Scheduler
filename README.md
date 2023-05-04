@@ -5,5 +5,6 @@ Using the dayjs library, the user has a clock at the top of their screen that is
 
 Deployed URL: https://beasaddress.github.io/Workday-Scheduler/
 
-image.png
+![image](https://user-images.githubusercontent.com/126925408/236334942-9188b942-8400-41e5-93cb-06c4aa8fc16e.png)
+
 

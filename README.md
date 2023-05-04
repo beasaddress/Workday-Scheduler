@@ -3,5 +3,7 @@ A simple, easy to use workday scheduler that allows the user to make plans accor
 
 Using the dayjs library, the user has a clock at the top of their screen that is refreshing every second (thanks to setInterval()). The dayjs library is also vital tothe interactivity of the application. Some of the functions are interacting with the current hour of the day given to us by dayjs, so that the application know what color to display on the time block. 
 
+Deployed URL: https://beasaddress.github.io/Workday-Scheduler/
 
+image.png
 
